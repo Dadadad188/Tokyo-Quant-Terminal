@@ -57,7 +57,6 @@ The mobile route is optimized for iOS Safari and Home Screen launch:
 <img width="2894" height="1640" alt="image" src="https://github.com/user-attachments/assets/aaa21ba5-3d70-42ee-9658-0f8c8ac3ebd6" />
 
 
-![Tokyo Institutional Market Monitor screenshot](./docs/screenshot.png)
 
 ## Getting Started
 
