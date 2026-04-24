@@ -1,3 +1,4 @@
+<img width="2894" height="1640" alt="monitor screenshot" src="https://github.com/user-attachments/assets/ad98cc87-4c0a-4cae-bbbc-aa177a525c95" />
 # Tokyo Institutional Market Monitor
 
 Tokyo Institutional Market Monitor is an institutional-grade Japanese equity analytics terminal built with React. It provides a high-density desktop dashboard and an iPhone-optimized mobile web app for monitoring Nikkei 225, TOPIX, sector attribution, valuation regimes, and market breadth.
