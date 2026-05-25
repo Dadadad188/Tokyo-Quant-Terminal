@@ -174,7 +174,7 @@ function GovernanceMonitor({ data }) {
   );
 }
 
-function SectorDeepDive({ sectors, selectedSector, onSelectSector }) {
+function SectorDeepDive({ sectors, selectedSectorKey, onSelectSector }) {
   const sorted = [...sectors].sort((a, b) => b.volumeHeat - a.volumeHeat);
   const option = {
     animation: false,
@@ -202,7 +202,7 @@ function SectorDeepDive({ sectors, selectedSector, onSelectSector }) {
       }),
     }],
   };
-  const selected = sectors.find((sector) => sector.name === selectedSector) ?? sectors[0];
+  const selected = sectors.find((sector) => sector.key === selectedSectorKey) ?? sectors[0];
   return (
     <Panel className="col-span-8 p-4">
       <div className="mb-4 flex items-center justify-between gap-4">
@@ -214,7 +214,7 @@ function SectorDeepDive({ sectors, selectedSector, onSelectSector }) {
       </div>
       <div className="h-[520px]">
         <ChartShell className="h-[520px]">
-          <ReactECharts option={option} onEvents={{ click: (params) => params.data?.name && onSelectSector(params.data.name) }} autoResize={true} style={{ height: "100%", width: "100%" }} />
+          <ReactECharts option={option} onEvents={{ click: (params) => params.data?.key && onSelectSector(params.data.key) }} autoResize={true} style={{ height: "100%", width: "100%" }} />
         </ChartShell>
       </div>
       <div className="mt-4 rounded-xl border border-emerald-300/15 bg-slate-950/25 p-4">
@@ -270,7 +270,7 @@ function BreadthPanel({ histogram, adLine }) {
 
 export default function DesktopTerminal() {
   const { marketData, loading, reload, isVisible } = useMarketData({ refreshInterval: 5_000 });
-  const [selectedSector, setSelectedSector] = useState("Transport Equipment");
+  const [selectedSectorKey, setSelectedSectorKey] = useState("Transportation Equipment");
   const quant = useQuantModels(marketData);
 
   if (loading && !marketData) return <Loading />;
@@ -291,7 +291,7 @@ export default function DesktopTerminal() {
         <CorrelationPanel data={marketData.correlationMonitor} />
         <StyleFlowPanel data={marketData.styleFlow} />
         <ValuationMetrics metrics={marketData.metrics} />
-        <SectorDeepDive sectors={marketData.sectors} selectedSector={selectedSector} onSelectSector={setSelectedSector} />
+        <SectorDeepDive sectors={marketData.sectors} selectedSectorKey={selectedSectorKey} onSelectSector={setSelectedSectorKey} />
         <BreadthPanel histogram={marketData.breadthHistogram} adLine={marketData.adLine} />
       </div>
     </main>

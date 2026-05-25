@@ -35,6 +35,11 @@ When ERP rises above the configured threshold, the terminal can flag a stronger 
 - iPhone layout with safe-area support, PWA full-screen meta tags, and low-power mode.
 - Visibility API aware refresh logic to pause polling when the app is backgrounded.
 - SWR-powered focus revalidation and route-specific refresh intervals.
+- Same-origin `/api/market-data` feed for Nikkei 225, TOPIX, and core Japanese equity snapshots, with static sample fallback if the quote source is unavailable.
+
+## Market Data
+
+The dashboard polls `/api/market-data` through SWR. In local development, Vite serves this route through middleware; on Vercel, `api/market-data.js` serves the same route as a serverless function. The API fetches delayed public quotes from Stooq and keeps the existing sample data as a fallback so the terminal still renders if the upstream quote source is unavailable.
 
 ## iPhone Adaptation
 

@@ -190,9 +190,9 @@ function MobileVolatility({ vi, curve }) {
 }
 
 function MobileSectorTreemap({ sectors }) {
-  const [selectedSector, setSelectedSector] = useState(sectors[0]?.name ?? "");
+  const [selectedSectorKey, setSelectedSectorKey] = useState(sectors[0]?.key ?? "");
   const sorted = [...sectors].sort((a, b) => b.volumeHeat - a.volumeHeat);
-  const selected = sectors.find((sector) => sector.name === selectedSector) ?? sectors[0];
+  const selected = sectors.find((sector) => sector.key === selectedSectorKey) ?? sectors[0];
   const mobileReadableMinValue = 54;
   const option = {
     animation: false,
@@ -245,7 +245,7 @@ function MobileSectorTreemap({ sectors }) {
       <h2 className="mt-1 text-lg font-semibold text-slate-50">TSE 33 Sector Treemap</h2>
       <div className="mt-4 h-[560px]">
         <ChartShell className="h-[560px]">
-          <ReactECharts option={option} onEvents={{ click: (params) => params.data?.name && setSelectedSector(params.data.name) }} autoResize={true} style={{ height: "100%", width: "100%" }} />
+          <ReactECharts option={option} onEvents={{ click: (params) => params.data?.key && setSelectedSectorKey(params.data.key) }} autoResize={true} style={{ height: "100%", width: "100%" }} />
         </ChartShell>
       </div>
       {selected ? (
